@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>سين جيم - عرب فيرست</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+  <div class="container">
+    <!-- شاشة البداية -->
+    <div id="start-screen" class="screen active">
+      <div class="logo-container">
+        <img src="attached_assets/1362905299064983853_1759879979535.png" alt="عرب فيرست" class="logo">
+      </div>
+      <h1>🎮 سين جيم - عرب فيرست</h1>
+      <p class="subtitle">اختبر معلوماتك عن سيرفر عرب فيرست!</p>
+      
+      <button class="btn btn-primary" onclick="startGame('team')">ابدأ اللعبة 👥</button>
+    </div>
+
+    <!-- شاشة إدخال أسماء الفِرق -->
+    <div id="team-screen" class="screen">
+      <h2>أدخل أسماء الفِرق</h2>
+      <div class="team-input">
+        <label for="team1">اسم الفريق الأول:</label>
+        <input type="text" id="team1" placeholder="مثال: الفوضى">
+      </div>
+      <div class="team-input">
+        <label for="team2">اسم الفريق الثاني:</label>
+        <input type="text" id="team2" placeholder="مثال: سكراب">
+      </div>
+      <button class="btn btn-primary" onclick="proceedToSelection()">التالي</button>
+    </div>
+
+    <!-- شاشة اختيار الفقرة والنقاط -->
+    <div id="selection-screen" class="screen">
+      <h2>اختر الفقرة وعدد النقاط</h2>
+      <div class="selection-scores" id="selection-scores"></div>
+      <div class="selection-container">
+        <div class="selection-section">
+          <h3>اختر الفقرة:</h3>
+          <div id="section-options"></div>
+        </div>
+        <div class="selection-section">
+          <h3>اختر عدد النقاط للسؤال:</h3>
+          <div class="points-options">
+            <button class="points-btn" onclick="selectPoints(100)">100 نقطة</button>
+            <button class="points-btn" onclick="selectPoints(200)">200 نقطة</button>
+            <button class="points-btn" onclick="selectPoints(300)">300 نقطة</button>
+            <button class="points-btn" onclick="selectPoints(400)">400 نقطة</button>
+            <button class="points-btn" onclick="selectPoints(500)">500 نقطة</button>
+            <button class="points-btn" onclick="selectPoints(700)">700 نقطة</button>
+          </div>
+        </div>
+      </div>
+      <button class="btn btn-primary" onclick="startQuiz()" id="start-quiz-btn" disabled>ابدأ اللعب</button>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="screen">
+      <div class="header">
+        <div class="section-info">
+          <h2 id="section-title"></h2>
+        </div>
+        <div class="scores">
+          <div id="score-display"></div>
+        </div>
+      </div>
+
+      <div class="question-container">
+        <div class="question-header">
+          <span class="question-number" id="question-num"></span>
+          <span class="question-points" id="question-points"></span>
+        </div>
+        <h3 id="question-text"></h3>
+        <div id="options-container"></div>
+        <div id="text-answer" class="text-answer-container" style="display: none;">
+          <input type="text" id="text-answer-input" placeholder="اكتب الإجابة هنا...">
+          <button class="btn btn-answer" onclick="checkTextAnswer()">تأكيد الإجابة</button>
+        </div>
+      </div>
+
+      <div id="feedback" class="feedback"></div>
+      <div id="team-feedback" class="team-feedback"></div>
+      
+      <!-- شاشة اختيار الفريق الفائز -->
+      <div id="winner-selection" class="winner-selection">
+        <h3>من الفريق الذي فاز؟</h3>
+        <div class="winner-buttons">
+          <button class="btn btn-winner" id="team1-winner-btn"></button>
+          <button class="btn btn-winner" id="team2-winner-btn"></button>
+          <button class="btn btn-winner btn-no-one" id="no-one-winner-btn">لا أحد</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- شاشة النتيجة النهائية -->
+    <div id="result-screen" class="screen">
+      <h1>🏆 انتهت اللعبة!</h1>
+      <div id="final-result"></div>
+      <button class="btn btn-primary" onclick="restartGame()">العب مرة أخرى</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
